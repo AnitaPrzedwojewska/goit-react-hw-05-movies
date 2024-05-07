@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 80px;
+}
+
+.logoName {
+  display: flex;
+  align-items: center;
+  font-size: 44px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+}

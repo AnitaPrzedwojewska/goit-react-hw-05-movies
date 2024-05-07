@@ -1,0 +1,72 @@
+.card {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 5px black;
+}
+@media screen and (min-width: 320px) {
+  .card {
+    width: 280px;
+    height: 440px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .card {
+    width: 336px;
+    height: 495px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .card {
+    width: 394px;
+    height: 634px;
+  }
+}
+.card:hover {
+  transform: scale(102%);
+}
+
+.poster {
+  width: 100%;
+}
+@media screen and (min-width: 320px) {
+  .poster {
+    height: 398px;
+    overflow: hidden;
+  }
+}
+@media screen and (min-width: 768px) {
+  .poster {
+    height: 455px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .poster {
+    height: 574px;
+  }
+}
+
+.poster > img {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.info {
+  padding-top: 10px;
+  font-size: 12px;
+  font-weight: medium;
+}
+@media screen and (min-width: 1280px) {
+  .info {
+    font-size: 20px;
+  }
+}
+
+.title {
+  text-transform: uppercase;
+}
+
+.txt {
+  color: var(--main-accent);
+}

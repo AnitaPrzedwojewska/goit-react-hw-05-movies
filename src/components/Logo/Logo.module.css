@@ -1,0 +1,14 @@
+.logoName {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 80px;
+}
+
+.name {
+  font-size: 44px;
+}
