@@ -1,11 +1,12 @@
 import css from './Navigation.module.css';
+import { Link } from 'react-router-dom';
 
 export const Navigation = () => {
   return (
     <nav className={css.naviList}>
-      <li className={css.naviItem}>Home</li>
-      <li className={css.naviItem}>Movies</li>
-      <li className={css.naviItem}>About</li>
+      <Link className={css.naviItem} to="/">Home</Link>
+      <Link className={css.naviItem} to="/movies">Movies</Link>
+      <Link className={css.naviItem} to="/about">About</Link>
     </nav>
   );
 }

@@ -4,10 +4,9 @@ import { fetchTrendingMovies } from "../../api/api_tmdb";
 import { Loader } from "../../components/Loader/Loader";
 import { Movies } from "../../components/Movies/Movies";
 
-export const Home = () => {
+export const HomeLayout = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
-
 
   useEffect(() => {
     setLoading(true);
