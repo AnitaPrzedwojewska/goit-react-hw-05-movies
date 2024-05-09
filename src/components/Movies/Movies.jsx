@@ -5,7 +5,8 @@ import { MovieCard } from '../MovieCard/MovieCard';
 
 export const Movies = ({ movies }) => {
   const location = useLocation();
-  console.log('Movies - movies: ', movies);
+
+  console.log('Movies - location: ', location);
   return (
     <div className={css.movGallery}>
       {movies.map(({ id, poster_path, title, vote_average }) => (
@@ -15,8 +16,7 @@ export const Movies = ({ movies }) => {
           poster_path={poster_path}
           title={title}
           vote_average={vote_average}
-          state={{ from: location }}
-        ></MovieCard>
+          state={{ from: location }}></MovieCard>
       ))}
     </div>
   );

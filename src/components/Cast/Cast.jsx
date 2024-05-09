@@ -1,4 +1,4 @@
-export const CastLayout = () => {
+export const Cast = () => {
   return (
     <>
       <h4>Cast</h4>

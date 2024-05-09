@@ -54,6 +54,7 @@ export const GENRES_LIST = [
 export async function getPoster(posterUrl) {
   const url = `POSTERS_URL${posterUrl}`;
   const response = await axios(url, options);
+  // console.log("response.data: ", response.data);
   return response.data;
 }
 
@@ -67,6 +68,7 @@ export async function fetchTrendingMovies() {
   });
   const url = `${BASE_URL}${endpointUrl}?${searchParams}`;
   const response = await axios(url, options);
+  // console.log("response.data: ", response.data);
   return response.data;
 }
 
@@ -78,10 +80,11 @@ export async function fetchSearchedMovies(keywords, pageNo) {
     query: keywords,
     include_adult: false,
     language: LANGUAGE,
-    page: pageNo,
+    page: pageNo
   });
   const url = `${BASE_URL}${endpointUrl}?${searchParams}`;
   const response = await axios(url, options);
+  // console.log("response.data: ", response.data);
   return response.data;
 }
 
@@ -94,6 +97,34 @@ export async function fetchMovieDetails(movieId) {
   });
   const url = `${BASE_URL}${endpointUrl}/${movieId}?${searchParams}`;
   const response = await axios(url, options);
+  console.log('response.data: ', response.data);
+  return response.data;
+}
+
+// Movie Cast
+export async function fetchMovieCast(movieId) {
+  const endpointUrl = "movie";
+  const searchParams = new URLSearchParams({
+    api_key: API_KEY,
+    language: LANGUAGE,
+  });
+  const url = `${BASE_URL}${endpointUrl}/${movieId}/credits?${searchParams}`;
+  console.log("response.data: ", response.data);
+  const response = await axios(url, options);
+  return response.data;
+}
+
+// Movie Reviews
+export async function fetchMovieReviewss(movieId, pageNo) {
+  const endpointUrl = "movie";
+  const searchParams = new URLSearchParams({
+    api_key: API_KEY,
+    language: LANGUAGE,
+    page: pageNo
+  });
+  const url = `${BASE_URL}${endpointUrl}/${movieId}/reviews?${searchParams}`;
+  const response = await axios(url, options);
+  console.log('response.data: ', response.data)
   return response.data;
 }
 
@@ -105,6 +136,7 @@ export async function fetchMovieTrailers(movieId) {
     language: LANGUAGE,
   });
   const url = `${BASE_URL}${endpointUrl}/${movieId}/videos?${searchParams}`;
+  console.log("response.data: ", response.data);
   const response = await axios(url, options);
   return response.data;
 }

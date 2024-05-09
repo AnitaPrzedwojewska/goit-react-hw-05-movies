@@ -1,6 +1,28 @@
-.naviList {
+.navList {
   display: flex;
   align-items: center;
   gap: 20px;
   list-style-type: none;
+}
+
+.navItem {
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: transparent;
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+
+  &.active {
+    color: white;
+    background-color: orangered;
+  }
+}
+.navItem:hover {
+  border: 1px solid orangered;
+}
+
+.navItem.active:hover {
+  border: 1px solid orangered;
 }
