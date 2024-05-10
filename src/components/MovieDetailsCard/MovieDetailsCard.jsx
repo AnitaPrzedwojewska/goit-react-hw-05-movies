@@ -27,10 +27,12 @@ export const MovieDetailsCard = ({
       </div>
       <div>
         <h3>{title}</h3>
+        <p>{release_date.substr(0, 4)}</p>
         <p>{genresList}</p>
+        <h4>Overview</h4>
         <p>{overview}</p>
-        <p>{release_date}</p>
-        <p>{vote_average && Math.floor(vote_average * 10)}</p>
+        <h4>Average rating</h4>
+        <p>{vote_average.toFixed(1)} / 10</p>
       </div>
     </div>
   );

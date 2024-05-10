@@ -13,17 +13,30 @@ export const MovieDetailsLayout = () => {
 
   const backLink = location.state?.from ?? "/movies";
 
+
+  console.log("movieId: ", movieId);
   useEffect(() => {
     fetchMovieDetails(movieId)
+      // .then(setMovieDetails)
       .then(({ results }) => {
-        console.log("movie details - movie: ", results);
+        console.log("fetchMovieDeatails - results: ", results);
         setMovieDetails(results);
       })
       .catch((error) => setError(error));
   }, []);
 
-  const { poster_path, title, genres, overview, vote_average, release_date } = movieDetails;
-  console.log('movieDetails: ', movieDetails);
+    // useEffect(() => {
+    //   fetchMovieDetails(movieId)
+    //     // .then(setMovieDetails)
+    //     .then(({ results }) => {
+    //       console.log("fetchMovieDeatails - results: ", results);
+    //       setMovieDetails(results);
+    //     })
+    //     .catch((error) => setError(error));
+    // }, [movieId]);
+
+  // const { poster_path, title, genres, overview, vote_average, release_date } = movieDetails;
+  // console.log("MovieDetailsLayout - movieDetails: ", movieDetails);
 
   return (
     <main>
@@ -33,12 +46,21 @@ export const MovieDetailsLayout = () => {
         Back to list of movies
       </Link>
       <PageHeader>
-        <h3>Movie details - {movieId} - {title}</h3>
+        <h3>
+          Movie details - {movieId} - {movieDetails.title}
+        </h3>
       </PageHeader>
       {error && <p>{error.message}</p>}
-      {movieDetails && (
-        <MovieDetailsCard poster_path={poster_path} title={title} genres={genres} overview={overview} vote_average={vote_average} release_date={release_date} />
-      )}
+      {/* {movieDetails && <p>Tu powinny być informacje o filmie</p>} */}
+      {console.log('movieDetails: ', movieDetails)}
+      <MovieDetailsCard
+        poster_path={movieDetails.poster_path}
+        title={movieDetails.title}
+        genres={movieDetails.genres}
+        overview={movieDetails.overview}
+        vote_average={movieDetails.vote_average}
+        release_date={movieDetails.release_date}
+      />
       <div>
         <Link to={`/movies/${movieId}/cast`}>Cast</Link>
         <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
@@ -47,71 +69,3 @@ export const MovieDetailsLayout = () => {
     </main>
   );
 };
-
-// adult :
-// false
-// backdrop_path :
-// "/5cCfqeUH2f5Gnu7Lh9xepY9TB6x.jpg"
-// belongs_to_collection :
-// {id: 2980, name: 'Ghostbusters Collection', poster_path: '/sctvCtE1M1rDF4f0W2fMrk2BrGB.jpg', backdrop_path: '/guigdRPHN65fsgZHmvVvBOyiArf.jpg'}
-// budget :
-// 100000000
-// genres :
-// (3) [{…}, {…}, {…}]
-// homepage :
-// "https://www.ghostbusters.com"
-// id :
-// 967847
-// imdb_id :
-// "tt21235248"
-// origin_country :
-// ['US']
-// original_language :
-// "en"
-// original_title :
-// "Ghostbusters: Frozen Empire"
-// overview
-// :
-// "The Spengler family returns to where it all started – the iconic New York City firehouse – to team up with the original Ghostbusters, who've developed a top-secret research lab to take busting ghosts to the next level. But when the discovery of an ancient artifact unleashes an evil force, Ghostbusters new and old must join forces to protect their home and save the world from a second Ice Age."
-// popularity
-// :
-// 919.006
-// poster_path
-// :
-// "/e1J2oNzSBdou01sUvriVuoYp0pJ.jpg"
-// production_companies
-// :
-// (2) [{…}, {…}]
-// production_countries
-// :
-// [{…}]
-// release_date
-// :
-// "2024-03-20"
-// revenue
-// :
-// 195102874
-// runtime
-// :
-// 115
-// spoken_languages
-// :
-// [{…}]
-// status
-// :
-// "Released"
-// tagline
-// :
-// "It'll send a chill down your spine."
-// title
-// :
-// "Ghostbusters: Frozen Empire"
-// video
-// :
-// false
-// vote_average
-// :
-// 6.566
-// vote_count
-// :
-// 507
