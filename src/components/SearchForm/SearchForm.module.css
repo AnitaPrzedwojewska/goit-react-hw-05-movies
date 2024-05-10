@@ -4,8 +4,11 @@
   gap: 20px;
 }
 
-.searchIcon {
-  height: 1em;
-  color: black;
-  stroke: black;
+.label {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .label {
+    display: block;
+  }
 }

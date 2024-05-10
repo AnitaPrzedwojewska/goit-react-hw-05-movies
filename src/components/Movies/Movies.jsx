@@ -6,7 +6,6 @@ import { MovieCard } from '../MovieCard/MovieCard';
 export const Movies = ({ movies }) => {
   const location = useLocation();
 
-  console.log('Movies - location: ', location);
   return (
     <div className={css.movGallery}>
       {movies.map(({ id, poster_path, title, vote_average }) => (

@@ -5,6 +5,8 @@ const API_KEY = "c4a1a601044e07d1317cdc7a5a610d93";
 const AUTHORIZATION =
   "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNGExYTYwMTA0NGUwN2QxMzE3Y2RjN2E1YTYxMGQ5MyIsInN1YiI6IjY1ZDI3MGEwNGJjMzhiMDE3MDU0NDZkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ORxI6_6HPJevgkEWPjECtsf0C8jWV9cvINuU4auf04c";
 
+export const POSTER_BASE_URL = "https://image.tmdb.org/t/p/w300";
+
 const LANGUAGE = "en-US";
 
 const options = {

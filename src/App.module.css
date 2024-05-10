@@ -1,3 +1,10 @@
+/*
+breakpoints:
+320px     20  ( 280 )   20    ( 280 )
+768px     32  ( 704 )   32    ( 220 22 220 22 220 )
+1280px    32  ( 1216 )  32    ( 280 32 280 32 280 32 280 )
+*/
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,12 +12,69 @@
   text-align: center;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  background-color: var(--bkg);
+  background-image: url()
+}
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  body {
+    font-size: 16px;
+  }
 }
 
 img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+@media screen and (min-width: 320px) {
+  .container {
+    max-width: 320px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
 }

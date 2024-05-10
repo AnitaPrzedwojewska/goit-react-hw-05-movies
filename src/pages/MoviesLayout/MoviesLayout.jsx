@@ -1,31 +1,38 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Outlet, useSearchParams } from "react-router-dom";
 import { fetchSearchedMovies } from "../../api/api_tmdb";
-import { Outlet } from "react-router-dom";
+import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { SearchForm } from "../../components/SearchForm/SearchForm";
 import { Movies } from "../../components/Movies/Movies";
 
 export const MoviesLayout = () => {
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+
+  const query = searchParams.get("query") ?? "";
 
   const handleSearchQuery = (query) => {
-    setQuery(query);
+     const newQuery = query !== "" ? { query } : {};
+     setSearchParams(newQuery);
   };
 
   useEffect(
     () => {
       fetchSearchedMovies(query, 1)
-      .then(({ results }) => {
-        setMovies(results);
-      });
+        .then(({ results }) => {
+          setMovies(results);
+        })
+        .catch((error) => setError(error));
     }, [query]
   );
 
   return (
     <main>
-      <h2>Movies</h2>
-      <SearchForm onSubmit={handleSearchQuery} />
+      <PageHeader>
+        <SearchForm value={query} onSubmit={handleSearchQuery} />
+      </PageHeader>
+      {error && <p>{error.message}</p>}
       {query && <Movies movies={movies} />}
       <Outlet />
     </main>

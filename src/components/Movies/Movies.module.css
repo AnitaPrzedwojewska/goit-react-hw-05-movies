@@ -1,4 +1,22 @@
 .movGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 280px);
+  gap: 16px;
+}
+@media screen and (min-width: 768px) {
+  .movGallery {
+    grid-template-columns: repeat(auto-fit, 220px);
+    gap: 22px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .movGallery {
+    grid-template-columns: repeat(auto-fit, 280px);
+    gap: 32px;
+  }
+}
+
+/* .movGallery {
   display: flex;
   flex-wrap: wrap;
   row-gap: 20px;
@@ -13,4 +31,4 @@
   .movGallery {
     column-gap: 16px;
   }
-}
+} */

@@ -4,7 +4,7 @@ import { Button } from '../Button/Button';
 import { ImSearch } from "react-icons/im";
 import { PropTypes } from 'prop-types';
 
-export const SearchForm = ({ onSubmit }) => {
+export const SearchForm = ({ query, onSubmit }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,19 +13,20 @@ export const SearchForm = ({ onSubmit }) => {
       alert("Please enter what you are looking for!");
       return;
     }
-    const query = queryWords.split(" ").join("+");
-    onSubmit(query);
+    const newQuery = queryWords.split(" ").join("+");
+    onSubmit(newQuery);
     event.currentTarget.reset();
   }
 
   return (
     <>
       <form onSubmit={handleSubmit} className={css.form}>
-        <p>Search for movies:</p>
+        <span className={css.label}>Search for movies:</span>
         <Input
           type='text'
           id='searchInput'
           name='searchInput'
+          value={query}
           placeholder='enter part of title'
         />
         <Button type='submit'>
@@ -37,5 +38,6 @@ export const SearchForm = ({ onSubmit }) => {
 }
 
 SearchForm.propTypes = {
+  query: PropTypes.string,
   onSubmit: PropTypes.func
 }

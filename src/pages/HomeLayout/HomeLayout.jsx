@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { fetchTrendingMovies } from "../../api/api_tmdb";
+import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { Movies } from "../../components/Movies/Movies";
 
 export const HomeLayout = () => {
@@ -16,7 +17,9 @@ export const HomeLayout = () => {
 
   return (
     <main>
-      <h2>Trending movies</h2>
+      <PageHeader>
+        <h2>Trending movies</h2>
+      </PageHeader>
       <Movies movies={movies} />
     </main>
   );
