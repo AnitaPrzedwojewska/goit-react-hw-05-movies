@@ -1,5 +1,5 @@
 import css from './Input.module.css';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const Input = ({type, id, placeholder, children}) => {
   return (

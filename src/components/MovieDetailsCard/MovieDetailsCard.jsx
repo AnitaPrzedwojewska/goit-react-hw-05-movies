@@ -1,14 +1,6 @@
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import css from './MovieDetailsCard.module.css';
-import { POSTER_BASE_URL, GENRES_LIST } from "../../api/api_tmdb";
-
-const getGenres = (genreIds) => {
-  const genres = genreIds.map((genreId) => {
-    const foundGenre = GENRES_LIST.find((genre) => genre.id === genreId);
-    return foundGenre ? foundGenre.name : "";
-  });
-  return genres.join(", ");
-};
+import { POSTER_BASE_URL } from "../../api/api_tmdb";
 
 export const MovieDetailsCard = ({
   poster_path,
@@ -18,21 +10,30 @@ export const MovieDetailsCard = ({
   vote_average,
   release_date,
 }) => {
-  const genresList = getGenres(genres);
-
+  // if (genres && genres.length() > 0)
+  //   genresList = genres.map(({ name }) => name).join(", ");
   return (
     <div className={css.detailsCard}>
-      <div>
+      <div className={css.poster}>
         <img src={`${POSTER_BASE_URL}\\${poster_path}`} />
       </div>
-      <div>
+      <div className={css.details}>
         <h3>{title}</h3>
-        <p>{release_date.substr(0, 4)}</p>
-        <p>{genresList}</p>
-        <h4>Overview</h4>
-        <p>{overview}</p>
-        <h4>Average rating</h4>
-        <p>{vote_average.toFixed(1)} / 10</p>
+        <div>
+          <p>{genres}</p>
+        </div>
+        <div>
+          <p className={css.label}>Overview</p>
+          <p>{overview}</p>
+        </div>
+        <div>
+          <p className={css.label}>Release date</p>
+          <p>{release_date}</p>
+        </div>
+        <div>
+          <p className={css.label}>Average rating</p>
+          <p>{vote_average} / 10</p>
+        </div>
       </div>
     </div>
   );
@@ -41,7 +42,7 @@ export const MovieDetailsCard = ({
 MovieDetailsCard.propTypes = {
   poster_path: PropTypes.string,
   title: PropTypes.string,
-  genres: PropTypes.array,
+  genres: PropTypes.string,
   overview: PropTypes.string,
   vote_average: PropTypes.number,
   release_date: PropTypes.string

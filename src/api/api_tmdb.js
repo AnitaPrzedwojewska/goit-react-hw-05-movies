@@ -52,6 +52,14 @@ export const GENRES_LIST = [
   { id: 37, name: "Western" },
 ];
 
+export const getGenres = (genreIds) => {
+  const genres = genreIds.map((genreId) => {
+    const foundGenre = GENRES_LIST.find((genre) => genre.id === genreId);
+    return foundGenre ? foundGenre.name : "";
+  });
+  return genres.join(", ");
+};
+
 // Posters
 export async function getPoster(posterUrl) {
   const url = `POSTERS_URL${posterUrl}`;
@@ -70,7 +78,7 @@ export async function fetchTrendingMovies() {
   });
   const url = `${BASE_URL}${endpointUrl}?${searchParams}`;
   const response = await axios(url, options);
-  // console.log("response.data: ", response.data);
+  // console.log("fetchTrendingMovies - response.data: ", response.data);
   return response.data;
 }
 
@@ -82,11 +90,11 @@ export async function fetchSearchedMovies(keywords, pageNo) {
     query: keywords,
     include_adult: false,
     language: LANGUAGE,
-    page: pageNo
+    page: pageNo,
   });
   const url = `${BASE_URL}${endpointUrl}?${searchParams}`;
   const response = await axios(url, options);
-  // console.log("response.data: ", response.data);
+  // console.log("fetchSearchedMovies - response.data: ", response.data);
   return response.data;
 }
 
@@ -99,7 +107,7 @@ export async function fetchMovieDetails(movieId) {
   });
   const url = `${BASE_URL}${endpointUrl}/${movieId}?${searchParams}`;
   const response = await axios(url, options);
-  console.log('response.data: ', response.data);
+  console.log("fetchMovieDetails - response.data: ", response.data);
   return response.data;
 }
 
@@ -111,7 +119,7 @@ export async function fetchMovieCast(movieId) {
     language: LANGUAGE,
   });
   const url = `${BASE_URL}${endpointUrl}/${movieId}/credits?${searchParams}`;
-  console.log("response.data: ", response.data);
+  console.log("fetchMovieCast - response.data: ", response.data);
   const response = await axios(url, options);
   return response.data;
 }
@@ -126,7 +134,7 @@ export async function fetchMovieReviewss(movieId, pageNo) {
   });
   const url = `${BASE_URL}${endpointUrl}/${movieId}/reviews?${searchParams}`;
   const response = await axios(url, options);
-  console.log('response.data: ', response.data)
+  console.log("fetchMovieReviewss - response.data: ", response.data);
   return response.data;
 }
 
@@ -138,7 +146,7 @@ export async function fetchMovieTrailers(movieId) {
     language: LANGUAGE,
   });
   const url = `${BASE_URL}${endpointUrl}/${movieId}/videos?${searchParams}`;
-  console.log("response.data: ", response.data);
+  console.log("fetchMovieTrailers - response.data: ", response.data);
   const response = await axios(url, options);
   return response.data;
 }

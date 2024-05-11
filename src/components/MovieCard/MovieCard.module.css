@@ -1,5 +1,8 @@
 .card {
   display: block;
+  background-color: white;
+  box-shadow: gray 4px 4px 10px;
+  transition: transform .5s ease-in-out;
 }
 .card:hover {
   transform: scale(102%);

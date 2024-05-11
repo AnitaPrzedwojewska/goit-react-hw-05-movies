@@ -1,3 +1,39 @@
 .detailsCard {
   display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+@media screen and (min-width: 768px) {
+  .detailsCard {
+    flex-direction: row;
+    column-gap: 20px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .detailsCard {
+    column-gap: 32px;
+  }
+}
+
+.poster {
+  min-width: 280px;
+}
+@media screen and (min-width: 1280px) {
+  .poster {
+    min-width: 300px;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  padding: 16px;
+  background-color: rgba(255,255,255,.75);
+}
+
+.label {
+  display: block;
+  font-size: bold;
+  margin-bottom: 6px;
 }

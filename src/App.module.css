@@ -29,17 +29,50 @@ body {
   font-weight: 500;
   line-height: 1.2;
   background-color: var(--bkg);
-  background-image: url()
+  background-image: url(./assets/background-320x183.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom right;
 }
+@media (min-device-pixel-ratio: 2),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    body {
+      background-image: url(./assets/background-320x183@2x.png)
+    }
+  }
 @media screen and (min-width: 768px) {
   body {
+    background-image: url(./assets/background-768x439.png);
     font-size: 14px;
+  }
+}
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  body {
+    background-image: url(./assets/background-768x439@2x.png);
   }
 }
 @media screen and (min-width: 1280px) {
   body {
+    background-image: url(./assets/background-1280x732.png);
     font-size: 16px;
   }
+}
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  body {
+    background-image: url(./assets/background-1280x732@2x.png);
+  }
+}
+
+main {
+  margin: 10px 0 20px;
 }
 
 img {

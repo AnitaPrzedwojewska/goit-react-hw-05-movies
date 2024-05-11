@@ -2,7 +2,7 @@ import css from './SearchForm.module.css';
 import { Input } from '../Input/Input';
 import { Button } from '../Button/Button';
 import { ImSearch } from "react-icons/im";
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const SearchForm = ({ query, onSubmit }) => {
 
