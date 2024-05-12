@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import css from "./Reviews.module.css";
 import { fetchMovieReviews } from "../../api/api_tmdb";
-import { ReviewCard } from "../ReviewCard/ReviewCard";
+import { PageHeader } from '../PageHeader/PageHeader';
+import { ReviewCard } from "./ReviewCard/ReviewCard";
+import { More } from '../More/More';
 
 export const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [page, setPage] = useState(1);
+  const [more, setMore] = useState(false);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
 
@@ -13,11 +17,13 @@ export const Reviews = () => {
     console.log("useEffect for fetchMovieReviews starts...");
     // console.log("movieId: ", movieId);
     if (!movieId) return;
-    fetchMovieReviews(movieId,1)
+    fetchMovieReviews(movieId,page)
       // .then(setReviews)
       .then((results) => {
-        console.log('useEffect - results: ', results);
-        setReviews(results);
+        console.log('useEffect - results: ', results.results);
+        console.log('useEffect - pages: ', results.total_pages);
+        setReviews(results.results);
+        setMore(results.total_pages > page);
       })
 
       .catch(setError);
@@ -25,10 +31,17 @@ export const Reviews = () => {
     //   console.log('useEffect - error: ', error);
     //   setError(error);
     // })
-  }, [movieId]);
+  }, [movieId, page]);
+
+  const handleClickMore = () => {
+    setPage(prevPage => prevPage + 1);
+  };
 
   return (
     <>
+      <PageHeader>
+        <h2>Reviews</h2>
+      </PageHeader>
       <div className={css.reviewsList}>
         {error && <p>{error.mesage}</p>}
         {reviews.length > 0 ? (
@@ -43,6 +56,7 @@ export const Reviews = () => {
         ) : (
           <p>No information about the cast</p>
         )}
+        {more && <More onClick={handleClickMore} />}
       </div>
     </>
   );

@@ -135,8 +135,8 @@ export async function fetchMovieReviews(movieId, pageNo) {
   });
   const url = `${BASE_URL}${endpointUrl}/${movieId}/reviews?${searchParams}`;
   const response = await axios(url, options);
-  console.log("fetchMovieReviewss - response.data.results: ", response.data.results);
-  return response.data.results;
+  console.log("fetchMovieReviewss - response.data: ", response.data);
+  return response.data;
 }
 
 // Movie Trailer

@@ -4,10 +4,10 @@ import css from "./Navigation.module.css";
 export const Navigation = () => {
   return (
     <nav className={css.navList}>
-      <NavLink className={css.navItem} to='/' end>
+      <NavLink className={css.navLink} to='/' end>
         Home
       </NavLink>
-      <NavLink className={css.navItem} to='/movies'>
+      <NavLink className={css.navLink} to='/movies'>
         Movies
       </NavLink>
     </nav>

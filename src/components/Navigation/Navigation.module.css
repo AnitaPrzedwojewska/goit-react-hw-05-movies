@@ -5,7 +5,7 @@
   list-style-type: none;
 }
 
-.navItem {
+.navLink {
   padding: 8px 16px;
   border: 1px solid transparent;
   border-radius: 4px;
@@ -19,10 +19,6 @@
     background-color: orangered;
   }
 }
-.navItem:hover {
-  border: 1px solid orangered;
-}
-
-.navItem.active:hover {
-  border: 1px solid orangered;
+.navLink:hover {
+  color: orangered;
 }

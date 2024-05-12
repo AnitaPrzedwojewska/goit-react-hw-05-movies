@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import css from './ActorCard.module.css';
-import { PHOTO_BASE_URL } from "../../api/api_tmdb";
-import noPhoto from "../../assets/no-photo-available.jpg";
+import PropTypes from "prop-types";
+import { PHOTO_BASE_URL } from "../../../api/api_tmdb";
+import noPhoto from "../../../assets/no-photo-available.jpg";
+import css from "./ActorCard.module.css";
 
 export const ActorCard = ({ profile_path, name, character }) => {
   const photo = profile_path
@@ -13,8 +13,8 @@ export const ActorCard = ({ profile_path, name, character }) => {
       <div className={css.card}>
         <img src={photo} />
         <div className={css.info}>
-          <h3>{name}</h3>
-          <p>{character}</p>
+          <p className={css.name}>{name}</p>
+          <p>as {character}</p>
         </div>
       </div>
     </>
@@ -24,5 +24,5 @@ export const ActorCard = ({ profile_path, name, character }) => {
 ActorCard.propTypes = {
   profile_path: PropTypes.string,
   name: PropTypes.string,
-  character: PropTypes.string
-}
+  character: PropTypes.string,
+};

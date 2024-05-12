@@ -1,7 +1,7 @@
 import css from './Movies.module.css';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import { MovieCard } from '../MovieCard/MovieCard';
+import { MovieCard } from './MovieCard/MovieCard';
 
 export const Movies = ({ movies }) => {
   const location = useLocation();

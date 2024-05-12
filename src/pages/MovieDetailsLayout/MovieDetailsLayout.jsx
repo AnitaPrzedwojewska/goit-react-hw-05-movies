@@ -32,8 +32,8 @@ export const MovieDetailsLayout = () => {
     [movieId]
   );
 
-  const { poster_path, title, overview, vote_average, release_date } = movieDetails;
-  let genresList = "";
+  const { poster_path, title, genres, overview, vote_average, release_date } = movieDetails;
+  // let genresList = "";
   // if (genres && genres.length() > 0)
   //   genresList = genres.map(({ name }) => name).join(", ");
 
@@ -55,15 +55,11 @@ export const MovieDetailsLayout = () => {
           <MovieDetailsCard
             poster_path={poster_path}
             title={title}
-            genres={genresList}
+            genres={genres}
             overview={overview}
             vote_average={vote_average}
             release_date={release_date}
           />
-          <div>
-            <Link to={`/movies/${movieId}/cast`}>Cast</Link>
-            <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
-          </div>
         </>
       )}
       <Outlet />

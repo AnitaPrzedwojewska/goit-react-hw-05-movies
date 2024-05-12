@@ -1,0 +1,27 @@
+.card {
+  display: block;
+  padding: 12px;
+  background-color: rgba(255,255,255,.9);
+  box-shadow: gray 4px 4px 10px;
+}
+@media screen and (min-width: 768px) {
+  .card {
+    padding: 16px;
+  }
+}
+
+.author {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.content {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.date {
+  text-align: right;
+  font-style: italic;
+}

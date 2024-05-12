@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 // import { useLocation } from "react-router-dom";
 import css from './MovieCard.module.css';
 import PropTypes from 'prop-types';
-import noPoster from "../../assets/no-poster-available.jpg";
+import noPoster from "../../../assets/no-poster-available.jpg";
 
 const POSTERS_URL = "https://image.tmdb.org/t/p/original/";
 

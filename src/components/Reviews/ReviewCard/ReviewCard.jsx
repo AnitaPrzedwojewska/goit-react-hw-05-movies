@@ -5,9 +5,9 @@ export const ReviewCard = ({ author, created_at, content }) => {
   return (
     <>
       <div className={css.card}>
-        <h3>{author}</h3>
-        <p>{created_at}</p>
-        <p>{content}</p>
+        <p className={css.author}>{author}</p>
+        <p className={css.content}>{content}</p>
+        <p className={css.date}>{created_at.substr(0,10)}</p>
       </div>
     </>
   );
