@@ -16,19 +16,18 @@ export const MovieDetailsLayout = () => {
 
   useEffect(
     () => {
-      console.log("useEffect starts...");
-      console.log("movieId: ",movieId);
       if (!movieId) return;
       fetchMovieDetails(movieId)
-        // .then(setMovieDetails)
-        .then((results) => {
-          console.log("useEffect - fetchMovieDeatails - results: ", results);
-          setMovieDetails(results);
-        })
-        .catch((error) => {
-          console.log("useEffect - fetchMovieDeatails - error: ", error);
-          setError(error)
-        });
+        .then(setMovieDetails)
+        // .then((results) => {
+        //   console.log("useEffect - results: ", results);
+        //   setMovieDetails(results);
+        // })
+        .catch(setError)
+        // .catch((error) => {
+        //   console.log("useEffect - error: ", error);
+        //   setError(error)
+        // });
     },
     [movieId]
   );
@@ -41,7 +40,6 @@ export const MovieDetailsLayout = () => {
 
   return (
     <main>
-      {console.log("MovieDetailsLayout - movieDetails: ", movieDetails)}
       {/* <Back to={backLink}>Back to list of movies</Back> */}
       <Link to={backLink}>
         <ImArrowLeft2 />

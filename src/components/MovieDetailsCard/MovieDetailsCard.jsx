@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import css from './MovieDetailsCard.module.css';
 import { POSTER_BASE_URL } from "../../api/api_tmdb";
+import noPoster from "../../assets/no-poster-available.jpg";
 
 export const MovieDetailsCard = ({
   poster_path,
@@ -12,10 +13,13 @@ export const MovieDetailsCard = ({
 }) => {
   // if (genres && genres.length() > 0)
   //   genresList = genres.map(({ name }) => name).join(", ");
+  const poster = poster_path
+    ? `${POSTER_BASE_URL}${poster_path}`
+    : `${noPoster}`;
   return (
     <div className={css.detailsCard}>
       <div className={css.poster}>
-        <img src={`${POSTER_BASE_URL}\\${poster_path}`} />
+        <img src={poster} />
       </div>
       <div className={css.details}>
         <h3>{title}</h3>

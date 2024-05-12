@@ -1,0 +1,17 @@
+.castGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 132px);
+  gap: 16px;
+}
+@media screen and (min-width: 768px) {
+  .castGallery {
+    grid-template-columns: repeat(auto-fit, 200px);
+    gap: 52px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .castGallery {
+    grid-template-columns: repeat(auto-fit, 200px);
+    gap: 54px;
+  }
+}

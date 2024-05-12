@@ -6,6 +6,7 @@ const AUTHORIZATION =
   "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNGExYTYwMTA0NGUwN2QxMzE3Y2RjN2E1YTYxMGQ5MyIsInN1YiI6IjY1ZDI3MGEwNGJjMzhiMDE3MDU0NDZkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ORxI6_6HPJevgkEWPjECtsf0C8jWV9cvINuU4auf04c";
 
 export const POSTER_BASE_URL = "https://image.tmdb.org/t/p/w300";
+export const PHOTO_BASE_URL = "https://image.tmdb.org/t/p/w200";
 
 const LANGUAGE = "en-US";
 
@@ -107,7 +108,7 @@ export async function fetchMovieDetails(movieId) {
   });
   const url = `${BASE_URL}${endpointUrl}/${movieId}?${searchParams}`;
   const response = await axios(url, options);
-  console.log("fetchMovieDetails - response.data: ", response.data);
+  // console.log("fetchMovieDetails - response.data: ", response.data);
   return response.data;
 }
 
@@ -119,13 +120,13 @@ export async function fetchMovieCast(movieId) {
     language: LANGUAGE,
   });
   const url = `${BASE_URL}${endpointUrl}/${movieId}/credits?${searchParams}`;
-  console.log("fetchMovieCast - response.data: ", response.data);
   const response = await axios(url, options);
-  return response.data;
+  // console.log("fetchMovieCast - response.data.cast: ", response.data.cast);
+  return response.data.cast;
 }
 
 // Movie Reviews
-export async function fetchMovieReviewss(movieId, pageNo) {
+export async function fetchMovieReviews(movieId, pageNo) {
   const endpointUrl = "movie";
   const searchParams = new URLSearchParams({
     api_key: API_KEY,
@@ -134,8 +135,8 @@ export async function fetchMovieReviewss(movieId, pageNo) {
   });
   const url = `${BASE_URL}${endpointUrl}/${movieId}/reviews?${searchParams}`;
   const response = await axios(url, options);
-  console.log("fetchMovieReviewss - response.data: ", response.data);
-  return response.data;
+  console.log("fetchMovieReviewss - response.data.results: ", response.data.results);
+  return response.data.results;
 }
 
 // Movie Trailer
