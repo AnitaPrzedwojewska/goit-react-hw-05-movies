@@ -1,5 +1,13 @@
+.moreElement {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .more {
   padding: 8px 16px;
+  background-color: transparent;
   border-radius: 5px;
   border: 1px solid orangered;
+  cursor: pointer;
 }

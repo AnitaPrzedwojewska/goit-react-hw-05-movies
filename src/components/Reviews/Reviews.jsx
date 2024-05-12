@@ -19,11 +19,11 @@ export const Reviews = () => {
     if (!movieId) return;
     fetchMovieReviews(movieId,page)
       // .then(setReviews)
-      .then((results) => {
-        console.log('useEffect - results: ', results.results);
-        console.log('useEffect - pages: ', results.total_pages);
-        setReviews(results.results);
-        setMore(results.total_pages > page);
+      .then(({ results, total_pages }) => {
+        console.log('useEffect - results: ', results);
+        console.log('useEffect - pages: ', total_pages);
+        setReviews(results);
+        setMore(total_pages > page);
       })
 
       .catch(setError);

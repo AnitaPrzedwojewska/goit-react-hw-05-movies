@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+// import { Suspense } from "react";
 import { fetchTrendingMovies } from "../../api/api_tmdb";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
+// import { Loader } from '../../components/Loader/Loader';
 import { Movies } from "../../components/Movies/Movies";
 
 export const HomeLayout = () => {
@@ -20,7 +21,9 @@ export const HomeLayout = () => {
       <PageHeader>
         <h2>Trending movies</h2>
       </PageHeader>
-      <Movies movies={movies} />
+      {/* <Suspense fallback={<Loader />}> */}
+        <Movies movies={movies} />
+      {/* </Suspense> */}
     </main>
   );
 };

@@ -135,7 +135,7 @@ export async function fetchMovieReviews(movieId, pageNo) {
   });
   const url = `${BASE_URL}${endpointUrl}/${movieId}/reviews?${searchParams}`;
   const response = await axios(url, options);
-  console.log("fetchMovieReviewss - response.data: ", response.data);
+  // console.log("fetchMovieReviewss - response.data: ", response.data);
   return response.data;
 }
 
@@ -147,7 +147,7 @@ export async function fetchMovieTrailers(movieId) {
     language: LANGUAGE,
   });
   const url = `${BASE_URL}${endpointUrl}/${movieId}/videos?${searchParams}`;
-  console.log("fetchMovieTrailers - response.data: ", response.data);
+  // console.log("fetchMovieTrailers - response.data: ", response.data);
   const response = await axios(url, options);
   return response.data;
 }
