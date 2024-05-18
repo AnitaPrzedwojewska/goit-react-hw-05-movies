@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import { fetchMovieDetails} from "../../api/api_tmdb";
-import { ImArrowLeft2 } from "react-icons/im";
+import { Outlet, useLocation, useParams } from "react-router-dom";
+
+import { Back } from '../../components/Back/Back';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { MovieDetailsCard } from '../../components/MovieDetailsCard/MovieDetailsCard';
-// import { Back } from '../../components/Back/Back';
+
+import { fetchMovieDetails} from "../../api/api_tmdb";
 
 export const MovieDetailsLayout = () => {
   const [movieDetails, setMovieDetails] = useState({});
@@ -19,33 +20,16 @@ export const MovieDetailsLayout = () => {
       if (!movieId) return;
       fetchMovieDetails(movieId)
         .then(setMovieDetails)
-        // .then((results) => {
-        //   console.log("useEffect - results: ", results);
-        //   setMovieDetails(results);
-        // })
         .catch(setError)
-        // .catch((error) => {
-        //   console.log("useEffect - error: ", error);
-        //   setError(error)
-        // });
     },
     [movieId]
   );
 
   const { poster_path, title, genres, overview, vote_average, release_date } = movieDetails;
-  // let genresList = "";
-  // if (genres && genres.length() > 0)
-  //   genresList = genres.map(({ name }) => name).join(", ");
-
 
   return (
     <main>
-      {/* <Back to={backLink}>Back to list of movies</Back> */}
-      <Link to={backLink}>
-        <ImArrowLeft2 />
-        {"   "}
-        Back to list of movies
-      </Link>
+      <Back to={backLink}>Back to list of movies</Back>
       <PageHeader>
         <h2>Movie details</h2>
       </PageHeader>

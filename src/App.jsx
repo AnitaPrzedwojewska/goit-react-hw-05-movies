@@ -1,13 +1,16 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+
 import css from "./App.module.css";
 import { Loader } from "./components/Loader/Loader";
 import { HomeLayout } from "./pages/HomeLayout/HomeLayout";
 import { SharedLayout } from "./pages/SharedLayout/SharedLayout";
+
 // import { MoviesLayout } from "./pages/MoviesLayout/MoviesLayout";
 // import { MovieDetailsLayout } from "./pages/MovieDetailsLayout/MovieDetailsLayout";
 // import { Cast } from "./components/Cast/Cast";
 // import { Reviews } from "./components/Reviews/Reviews";
+
 const MoviesLayout = lazy(() =>
   import("./pages/MoviesLayout/MoviesLayout").then((module) => {
     return { default: module.MoviesLayout };

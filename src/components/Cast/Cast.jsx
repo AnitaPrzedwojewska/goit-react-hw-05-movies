@@ -11,17 +11,10 @@ export const Cast = () => {
   const { movieId } = useParams();
 
   useEffect(() => {
-    // console.log("useEffect for fetchMovieCast starts...");
-    // console.log("movieId: ", movieId);
     if (!movieId) return;
     fetchMovieCast(movieId)
       .then(setCast)
-      // .then((results) =>
       .catch(setError);
-    // .catch((error) => {
-    //   console.log('useEffect - error: ', error);
-    //   setError(error);
-    // })
   }, [movieId]);
 
   return (

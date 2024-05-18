@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
-// import { Suspense } from "react";
-import { fetchTrendingMovies } from "../../api/api_tmdb";
+import { useState, useEffect, Suspense } from "react";
+
 import { PageHeader } from "../../components/PageHeader/PageHeader";
-// import { Loader } from '../../components/Loader/Loader';
+import { Loader } from '../../components/Loader/Loader';
 import { Movies } from "../../components/Movies/Movies";
+
+import { fetchTrendingMovies } from "../../api/api_tmdb";
 
 export const HomeLayout = () => {
   const [movies, setMovies] = useState([]);
@@ -21,9 +22,9 @@ export const HomeLayout = () => {
       <PageHeader>
         <h2>Trending movies</h2>
       </PageHeader>
-      {/* <Suspense fallback={<Loader />}> */}
+      <Suspense fallback={<Loader />}>
         <Movies movies={movies} />
-      {/* </Suspense> */}
+      </Suspense>
     </main>
   );
 };

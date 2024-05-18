@@ -1,5 +1,6 @@
-import css from './More.module.css';
 import PropTypes from 'prop-types';
+
+import css from './More.module.css';
 
 export const More = ({ onClick }) => {
   return (

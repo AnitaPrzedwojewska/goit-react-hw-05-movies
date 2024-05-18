@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-// import { Suspense } from "react";
+import { Suspense } from "react";
 import { Outlet, useSearchParams } from "react-router-dom";
 import { fetchSearchedMovies } from "../../api/api_tmdb";
+
 import { PageHeader } from "../../components/PageHeader/PageHeader";
-// import { Loader } from "../../components/Loader/Loader";
+import { Loader } from "../../components/Loader/Loader";
 import { SearchForm } from "../../components/SearchForm/SearchForm";
 import { Movies } from "../../components/Movies/Movies";
-import { INITIAL_STATE } from "../../constants/initial-movies";
 import { More} from '../../components/More/More'
+
+import { INITIAL_STATE } from "../../constants/initial-movies";
 
 export const MoviesLayout = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -40,7 +42,13 @@ export const MoviesLayout = () => {
             setError(`Sorry, there are no movies matching '${query}'. Please try again.`);
             return;
           }
-          setMovies((prevMovies) => ([...prevMovies, ...results]));
+          // if page render after click backlink
+          setMovies((prevMovies) => {
+            if (prevMovies.length > 0) {
+              if (prevMovies[prevMovies.length - 1].id === results[results.length - 1].id) return ([...prevMovies]);
+            }
+            return ([...prevMovies, ...results])
+          });
           setMore(total_pages > page);
         })
         .catch((error) => setError(error.message));
@@ -56,12 +64,12 @@ export const MoviesLayout = () => {
       <PageHeader>
         <SearchForm value={query} onSubmit={handleSearchQuery} />
       </PageHeader>
-      {/* <Suspense fallback={<Loader />}> */}
+      <Suspense fallback={<Loader />}>
         {error && <p>{error.message}</p>}
         {query && <Movies movies={movies} />}
         {more && <More onClick={handleClickMore} />}
         <Outlet />
-      {/* </Suspense> */}
+      </Suspense>
     </main>
   );
 };

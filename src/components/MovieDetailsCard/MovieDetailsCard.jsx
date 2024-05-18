@@ -1,8 +1,10 @@
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams, NavLink, useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
+
 import css from './MovieDetailsCard.module.css';
-import { POSTER_BASE_URL } from "../../api/api_tmdb";
 import noPoster from "../../assets/no-poster-available.jpg";
+
+import { POSTER_BASE_URL } from "../../api/api_tmdb";
 
 export const MovieDetailsCard = ({
   poster_path,
@@ -13,12 +15,13 @@ export const MovieDetailsCard = ({
   release_date,
 }) => {
   const { movieId } = useParams();
+  const location = useLocation();
+  // console.log('MovieDetailsCard - location: ', location);
 
   const poster = poster_path
     ? `${POSTER_BASE_URL}${poster_path}`
     : `${noPoster}`;
 
-  console.log("typeof(genres): ", typeof genres);
   const genresList = (genres && genres.length > 0) ? genres.map(({ name }) => name).join(", ") : "";
 
   return (
@@ -48,10 +51,16 @@ export const MovieDetailsCard = ({
           </div>
         </div>
         <div className={css.links}>
-          <NavLink className={css.navLink} to={`/movies/${movieId}/cast`}>
+          <NavLink
+            className={css.navLink}
+            to={`/movies/${movieId}/cast`}
+            state={{ from: location.state.from }}>
             Cast
           </NavLink>
-          <NavLink className={css.navLink} to={`/movies/${movieId}/reviews`}>
+          <NavLink
+            className={css.navLink}
+            to={`/movies/${movieId}/reviews`}
+            state={{ from: location.state.from }}>
             Reviews
           </NavLink>
         </div>
