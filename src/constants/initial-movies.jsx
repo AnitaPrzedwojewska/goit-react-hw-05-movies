@@ -1,7 +1,7 @@
 export const INITIAL_STATE = {
-  query: '',
+  query: "",
   movies: [],
   page: 1,
-  error: '',
-  more: false
-}
+  error: "",
+  more: false,
+};

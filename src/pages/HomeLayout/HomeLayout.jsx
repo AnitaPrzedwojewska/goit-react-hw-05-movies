@@ -1,7 +1,7 @@
 import { useState, useEffect, Suspense } from "react";
 
 import { PageHeader } from "../../components/PageHeader/PageHeader";
-import { Loader } from '../../components/Loader/Loader';
+import { Loader } from '../../../../../My-projects/zawody-pzlam/src/components/Loader/Loader';
 import { Movies } from "../../components/Movies/Movies";
 
 import { fetchTrendingMovies } from "../../api/api_tmdb";
